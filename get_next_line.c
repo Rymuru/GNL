@@ -6,30 +6,30 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 12:09:28 by bcoenon           #+#    #+#             */
-/*   Updated: 2021/12/16 14:40:04 by bcoenon          ###   ########.fr       */
+/*   Updated: 2021/12/16 15:09:54 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int     end_of_line(char *buffer)
+int	end_of_line(char *buffer)
 {
-    int 	i;
+	int	i;
 
-    i = 0; 
-    while (buffer[i])
-    {
-        if (buffer[i] == '\n')
-            return (1);
-        i++;
-    }
-    return (0);
+	i = 0;
+	while (buffer[i])
+	{
+		if (buffer[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 char	*resizer(char *buffer)
 {
-	int i;
-	int bis;
+	int	i;
+	int	bis;
 
 	i = 0;
 	bis = 0;
@@ -59,11 +59,11 @@ char	*out(char *line, char *buffer, int read_status)
 
 char	*get_next_line(int fd)
 {
-    static char buffer[BUFFER_SIZE + 1];
-    char        *line;
-    int         read_status;
+	static char	buffer[BUFFER_SIZE + 1];
+	char		*line;
+	int			read_status;
 
-    read_status = read(fd, buffer, 0);
+	read_status = read(fd, buffer, 0);
 	if (BUFFER_SIZE < 1 || fd < 0 || read_status == -1)
 		return (NULL);
 	line = NULL;
@@ -82,5 +82,5 @@ char	*get_next_line(int fd)
 			return (NULL);
 		buffer[read_status] = '\0';
 	}
-    return (out(line, buffer, read_status));
+	return (out(line, buffer, read_status));
 }

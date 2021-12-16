@@ -6,23 +6,23 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 12:09:18 by bcoenon           #+#    #+#             */
-/*   Updated: 2021/12/16 14:39:23 by bcoenon          ###   ########.fr       */
+/*   Updated: 2021/12/16 15:12:32 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int     ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i])
-        i++;
-    return (i);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-char	*ft_strnjoin_GNL(char *line, char *buffer)
+char	*ft_strnjoin_gnl(char *line, char *buffer)
 {
 	size_t	i;
 	size_t	j;
@@ -31,7 +31,7 @@ char	*ft_strnjoin_GNL(char *line, char *buffer)
 	if (!buffer)
 		return (line);
 	else if (!line)
-		return (ft_strdup_GNL(buffer));
+		return (ft_strdup_gnl(buffer));
 	i = 0;
 	j = 0;
 	mem = (char *)malloc(sizeof(char) * (ft_strlen(line) + ft_strlen (buffer) + 1));
@@ -51,7 +51,7 @@ char	*ft_strnjoin_GNL(char *line, char *buffer)
 	return (mem);
 }
 
-char	*ft_strdup_GNL(char *s1)
+char	*ft_strdup_gnl(char *s1)
 {
 	int		i;
 	int		len;
