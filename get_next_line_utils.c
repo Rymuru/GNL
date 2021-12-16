@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 12:09:18 by bcoenon           #+#    #+#             */
-/*   Updated: 2021/12/16 15:12:32 by bcoenon          ###   ########.fr       */
+/*   Updated: 2021/12/16 17:41:53 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,23 @@ int	ft_strlen(char *str)
 
 char	*ft_strnjoin_gnl(char *line, char *buffer)
 {
-	size_t	i;
-	size_t	j;
+	int		i;
+	int		j;
 	char	*mem;
 
 	if (!buffer)
 		return (line);
 	else if (!line)
 		return (ft_strdup_gnl(buffer));
-	i = 0;
-	j = 0;
-	mem = (char *)malloc(sizeof(char) * (ft_strlen(line) + ft_strlen (buffer) + 1));
+	i = -1;
+	j = -1;
+	mem = malloc(sizeof(char) * (ft_strlen(line) + ft_strlen (buffer) + 1));
 	if (!mem)
 		return (NULL);
-	while (line[i])
-	{
+	while (line[++i])
 		mem[i] = line[i];
-		i++;
-	}
-	while (buffer[j] && buffer[j] != '\n')
-	{
+	while (buffer[++j] && buffer[j] != '\n')
 		mem[i + j] = buffer[j];
-		j++;
-	}
 	free(line);
 	mem[i + j] = '\0';
 	return (mem);
