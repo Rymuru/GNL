@@ -1,33 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/29 12:09:18 by bcoenon           #+#    #+#             */
+/*   Updated: 2021/12/16 14:39:23 by bcoenon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
-char    *ft_putstr(char *str)
+int     ft_strlen(char *str)
 {
     int i;
 
-    if (str == NULL)
-    {
-        write (1, "NULL", 4);
-        return (NULL);
-    }
-    
     i = 0;
-    while (str[i] != 0)
+    while (str[i])
         i++;
-    write(1, str, i);
-    return (str);
+    return (i);
 }
 
-void    *ft_allocate(int buffer)
+char	*ft_strnjoin_GNL(char *line, char *buffer)
 {
-    void    *mem;
+	size_t	i;
+	size_t	j;
+	char	*mem;
 
-    if (buffer == 0)
-    {
-        mem = malloc(0);
-        return (mem);
-    }
-    mem = malloc(sizeof(char) * buffer);
-    if (!mem)
-        return (NULL);
-    return (mem);
+	if (!buffer)
+		return (line);
+	else if (!line)
+		return (ft_strdup_GNL(buffer));
+	i = 0;
+	j = 0;
+	mem = (char *)malloc(sizeof(char) * (ft_strlen(line) + ft_strlen (buffer) + 1));
+	if (!mem)
+		return (NULL);
+	while (line[i])
+	{
+		mem[i] = line[i];
+		i++;
+	}
+	while (buffer[j] && buffer[j] != '\n')
+	{
+		mem[i + j] = buffer[j];
+		j++;
+	}
+	mem[i + j] = '\0';
+	return (mem);
+}
+
+char	*ft_strdup_GNL(char *s1)
+{
+	int		i;
+	int		len;
+	char	*str;
+
+	i = 0;
+	if (s1 == NULL)
+		return (NULL);
+	len = ft_strlen(s1) + 1;
+	str = malloc(len * sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	while (s1[i] && s1[i] != '\n')
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
