@@ -47,6 +47,7 @@ char	*ft_strnjoin_gnl(char *line, char *buffer)
 		mem[i + j] = buffer[j];
 		j++;
 	}
+	free(line);
 	mem[i + j] = '\0';
 	return (mem);
 }

@@ -12,6 +12,16 @@
 
 #include "get_next_line.h"
 
+char	*out(char *line, char *buffer, int read_status)
+{
+	if (read_status == 0)
+		return (NULL);
+	line = ft_strnjoin_gnl(line, buffer);
+	if (ft_strlen(buffer) != 0)
+		resizer(buffer);
+	return (line);
+}
+
 int	end_of_line(char *buffer)
 {
 	int	i;
@@ -47,16 +57,6 @@ char	*resizer(char *buffer)
 	return (buffer);
 }
 
-char	*out(char *line, char *buffer, int read_status)
-{
-	if (read_status == 0)
-		return (NULL);
-	line = ft_strnjoin_GNL(line, buffer);
-	if (ft_strlen(buffer) != 0)
-		resizer(buffer);
-	return (line);
-}
-
 char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
@@ -76,7 +76,7 @@ char	*get_next_line(int fd)
 	}
 	while (read_status == BUFFER_SIZE && end_of_line(buffer) == 0)
 	{
-		line = ft_strnjoin_GNL(line, buffer);
+		line = ft_strnjoin_gnl(line, buffer);
 		read_status = read(fd, buffer, BUFFER_SIZE);
 		if (read_status == -1)
 			return (NULL);

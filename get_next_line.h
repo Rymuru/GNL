@@ -23,8 +23,8 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_strdup_GNL(char *s1);
-char	*ft_strnjoin_GNL(char *line, char *buffer);
+char	*ft_strdup_gnl(char *s1);
+char	*ft_strnjoin_gnl(char *line, char *buffer);
 char	*out(char *line, char *buffer, int read_status);
 char	*resizer(char *buffer);
 
