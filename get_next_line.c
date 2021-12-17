@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 12:09:28 by bcoenon           #+#    #+#             */
-/*   Updated: 2021/12/16 15:09:54 by bcoenon          ###   ########.fr       */
+/*   Updated: 2021/12/17 14:11:05 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 char	*out(char *line, char *buffer, int read_status)
 {
 	if (read_status == 0)
+	{
 		return (NULL);
+	}
 	line = ft_strnjoin_gnl(line, buffer);
 	if (ft_strlen(buffer) != 0)
+	{
 		resizer(buffer);
+	}
 	return (line);
 }
 

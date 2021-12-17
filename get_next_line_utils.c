@@ -6,7 +6,7 @@
 /*   By: bcoenon <bcoenon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/29 12:09:18 by bcoenon           #+#    #+#             */
-/*   Updated: 2021/12/16 17:41:53 by bcoenon          ###   ########.fr       */
+/*   Updated: 2021/12/17 15:13:30 by bcoenon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strlen(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (str && str[i])
 		i++;
 	return (i);
 }
@@ -39,7 +39,7 @@ char	*ft_strnjoin_gnl(char *line, char *buffer)
 		return (NULL);
 	while (line[++i])
 		mem[i] = line[i];
-	while (buffer[++j] && buffer[j] != '\n')
+	while (buffer[++j] && buffer[j - 1] != '\n')
 		mem[i + j] = buffer[j];
 	free(line);
 	mem[i + j] = '\0';
@@ -59,7 +59,7 @@ char	*ft_strdup_gnl(char *s1)
 	str = malloc(len * sizeof(char));
 	if (str == NULL)
 		return (NULL);
-	while (s1[i] && s1[i] != '\n')
+	while (s1[i] && s1[i - 1] != '\n')
 	{
 		str[i] = s1[i];
 		i++;
